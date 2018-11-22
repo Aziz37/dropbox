@@ -15,9 +15,10 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('admin_id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('folder_id');
+            $table->unsignedInteger('admin_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('root_id')->nullable();
+            $table->unsignedInteger('folder_id')->nullable();
             $table->string('filename');
             $table->string('path');
             $table->timestamps();

@@ -13,10 +13,13 @@ class CreateRootTable extends Migration
      */
     public function up()
     {
-        Schema::create('root', function (Blueprint $table) {
+        Schema::create('roots', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('admin_id');
             $table->string('name');
             $table->text('description');
+            $table->string('image');
+            $table->string('image_path');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateRootTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('root');
+        Schema::dropIfExists('roots');
     }
 }

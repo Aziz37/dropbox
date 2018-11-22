@@ -1,0 +1,32 @@
+.login {
+	background-color: #333;
+	color: white;
+}
+
+.top-logo {
+	margin-top: 20px;
+}
+
+.card-login {
+	margin-top: 60px;
+}
+
+.login-label {
+	color: white !important;
+	font-size: 1rem !important;
+}
+
+.login-form-ctrl {
+	border-radius: 0;
+	background-color: #747b81;
+}
+
+.btn-login {
+	border-radius: 0px;
+	font-size: larger;
+
+}
+
+.footer-login {
+	margin-top: 50px;
+}
