@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\File;
 use App\Models\Admin;
+use App\Models\Video;
 use App\Models\Folder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,5 +23,10 @@ class Root extends Model
     public function files()
     {
     	return $this->hasMany(File::class);
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
     }
 }

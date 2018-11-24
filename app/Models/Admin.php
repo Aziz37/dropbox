@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Root;
 use App\Models\Files;
+use App\Models\Video;
 use App\Models\Folder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -47,5 +48,10 @@ class Admin extends Authenticatable
     public function files()
     {
     	return $this->hasMany(File::class);	
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class); 
     }
 }

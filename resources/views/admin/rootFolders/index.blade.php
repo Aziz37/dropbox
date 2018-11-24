@@ -18,6 +18,7 @@
 								<thead>
 									<tr>
 										<th></th>
+										<th></th>
 										<th>Name</th>
 										<th>Description</th>
 										<th>Created By</th>
@@ -31,8 +32,9 @@
 									<td>
 										<img class="img-thumbnail" src="{{ Storage::url($folder->image_path) }}" alt="{{$folder->name}}" style="max-width:70px">
 									</td>
+									<td><i class="fas fa-folder"></i></td>
 									<th scope="row">
-										<i class="fas fa-folder"></i>&nbsp&nbsp<a href="/admin/root/{{ $folder->id }}">{{ $folder->name }}</a>
+										<a href="/admin/root/{{ $folder->id }}">{{ $folder->name }}</a>
 									</th>
 									<td class="description-col">{{ $folder->description }}</td>
 									<td>{{ $folder->admin->name }}</td>

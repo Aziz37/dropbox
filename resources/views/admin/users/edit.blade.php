@@ -70,5 +70,59 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="title">
+							Folder Access List
+						</h3>
+					</div>
+					<div class="card-body">
+						<table class="table table-striped text-center">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Name</th>
+									<th>Created By</th>
+									<th>Department</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach($folders as $folder)
+									<tr>
+										<td><i class="fas fa-folder"></i></td>
+										<td>{{$folder->name}}</td>
+										<td>{{$folder->admin->name}}</td>
+										<td>{{$folder->admin->department}}</td>
+										<td>
+											@if($user->folders()->where('user_id', '=', $user->id)->exists() && $user->folders()->where('folder_id', '=', $folder->id)->exists())
+												<form method="post" action="/admin/folders/access/{{$user->id}}">
+													@method('DELETE')
+													@csrf
+													<input type="hidden" name="user_id" value="{{$user->id}}">
+													<input type="hidden" name="folder_id" value="{{$folder->id}}">
+													<button type="submit" class="btn btn-danger btn-round"><i class="fas fa-lock"></i>&nbsp&nbspRevoke Access</button>
+												</form>
+											@else
+												<form method="post" action="/admin/folders/access">
+													@csrf
+													<input type="hidden" name="user_id" value="{{$user->id}}">
+													<input type="hidden" name="folder_id" value="{{$folder->id}}">
+													<button type="submit" class="btn btn-success btn-round"><i class="fas fa-lock-open"></i>&nbsp&nbspGrant Access</button>
+												</form>
+											@endif
+										</td>
+									</tr>
+								@endforeach
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 @endsection

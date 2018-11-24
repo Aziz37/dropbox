@@ -26,6 +26,7 @@ function setNavigation() {
 	    var val = $(this).val();
 	    $('#subfolder').hide();
 	    $('#file').hide();
+        $('#video').hide();
 	    $('#' + val).show();
 	});
 
@@ -46,4 +47,3 @@ function setNavigation() {
 <script>
     $('#alert').delay(3000).fadeOut();
 </script>
-

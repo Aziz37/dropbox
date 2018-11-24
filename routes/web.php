@@ -14,9 +14,14 @@ Route::prefix('admin')->group(function() {
 
 	Route::resource('/root', Admin\RootFoldersController::class);
 	Route::resource('/folders', Admin\FoldersController::class);
+	Route::post('/folders/access', 'Admin\AccessesController@store');
+	Route::delete('/folders/access/{id}', 'Admin\AccessesController@delete');
 	Route::post('/files/upload', 'Admin\FilesController@store');
 	Route::get('/file/download/{id}', 'Admin\FilesController@show');
 	Route::delete('/file/{id}', 'Admin\FilesController@destroy');
+	Route::post('/videos/upload', 'Admin\VideosController@store');
+	Route::get('/videos/view/{id}', 'Admin\VideosController@show');
+	Route::delete('/videos/{id}', 'Admin\VideosController@destroy');
 
 	Route::resource('/users', Admin\UsersController::class);
 
@@ -38,6 +43,9 @@ Route::prefix('users')->group(function() {
 	Route::post('/files/upload', 'User\FilesController@store');
 	Route::get('/file/download/{id}', 'User\FilesController@show');
 	Route::delete('/file/{id}', 'User\FilesController@destroy');
+	Route::post('/videos/upload', 'User\VideosController@store');
+	Route::get('/videos/view/{id}', 'User\VideosController@show');
+	Route::delete('/videos/{id}', 'User\VideosController@destroy');
 
 	Route::get('/profile/{id}/edit', 'User\HomeController@edit');
 	Route::patch('/profile/{id}', 'User\HomeController@update');

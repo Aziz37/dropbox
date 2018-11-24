@@ -25,6 +25,7 @@
 										<option value="" selected="selected">choose option</option>
 										<option value="subfolder">folder</option>
 										<option value="file">file</option>
+										<option value="video">video</option>
 									</select>
 								</div>
 
@@ -49,6 +50,20 @@
 										<input type="hidden" name="folder_id" value="{{ $folder->id }}">
 									</div>
 									<button type="submit" class="btn btn-primary btn-round">Upload</button>
+								</form>
+
+								<form method="POST" action="/admin/videos/upload" id="video" style="display:none">
+									@csrf
+									<div class="form-group">
+										<label for="name">Video Name: </label>
+										<input type="text" class="form-control" name="video_name" required>
+									</div>
+									<div class="form-group">
+										<label for="name">Video Link: </label>
+										<input type="text" class="form-control" name="url" required>
+									</div>
+									<input type="hidden" name="folder_id" value="{{$folder->id}}">
+									<button type="submit" class="btn btn-primary btn-round">Save Video</button>
 								</form>
 							</h6>
                     	</blockquote>
@@ -116,6 +131,30 @@
 										</form>
 									</td>
 
+								</tr>
+							@endforeach
+							@foreach($folder->videos as $video)
+								<tr>
+									<th scope="row">
+										<i class="fas fa-file-video"></i>&nbsp&nbsp{{$video->video_name}}
+									</th>
+									@if(isset($video->user->name))
+										<td>{{ $video->user->name }}</td>
+									@elseif(isset($video->admin->name))
+										<td>{{ $video->admin->name }}</td>
+									@endif
+									<td>{{ $video->created_at->toFormattedDateString() }}</td>
+									<td>{{ $video->updated_at->toFormattedDateString() }}</td>
+									<td>
+										<a class="btn btn-info btn-round" href="/admin/videos/view/{{ $video->id }}"><i class="fas fa-eye"></i>&nbsp&nbspView Video</a>
+									</td>
+									<td>
+										<form method="POST" action="/admin/videos/{{ $video->id }}">
+											@method('DELETE')
+											@csrf
+											<button type="submit" class="btn btn-danger btn-round"><i class="fas fa-trash-alt"></i>&nbsp&nbspDelete</button>
+										</form>
+									</td>
 								</tr>
 							@endforeach
 						</table>

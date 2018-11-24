@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Folder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -54,9 +55,10 @@ class UsersController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user    =   User::findOrFail($id);
+        $folders =   Folder::where('id','>',1)->get();
 
-        return view('admin.users.edit', compact('user'));
+        return view('admin.users.edit', compact('user', 'folders'));
     }
 
     public function update($id, Request $request)

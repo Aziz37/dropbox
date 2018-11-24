@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Models\File;
+use App\Models\Video;
+use App\Models\Folder;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -32,5 +34,15 @@ class User extends Authenticatable
     public function files()
     {
     	return $this->hasMany(File::class);
+    }
+
+    public function video()
+    {
+        return $this->hasMany(Video::class);
+    }
+
+    public function folders()
+    {
+        return $this->belongsToMany(Folder::class);
     }
 }

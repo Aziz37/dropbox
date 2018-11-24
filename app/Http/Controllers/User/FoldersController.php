@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Models\Folder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class FoldersController extends Controller
@@ -19,6 +20,13 @@ class FoldersController extends Controller
 
         $subfolders = Folder::where('parent_id', '=', $id)->get();
 
-        return view('users.folders.show', compact('folder', 'subfolders'));
+        if($folder->users()->where('folder_id', '=', $folder->id)->exists() && $folder->users()->where('user_id', '=', Auth::user()->id)->exists())
+        {
+            return view('users.folders.show', compact('folder', 'subfolders'));   
+        }
+
+        session()->flash('message', 'You are not authorized to access this folder');
+
+        return redirect()->back();
     }
 }

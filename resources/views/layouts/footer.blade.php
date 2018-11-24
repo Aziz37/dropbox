@@ -19,8 +19,6 @@
 	<script src="{{ asset('js/core/bootstrap.js') }}"></script>
 	<!-- <script src="{{ asset('js/core/bootstrap.min.js') }}"></script> -->
 	<script src="{{ asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
-	<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 	
 	@include('layouts.scripts')
 	

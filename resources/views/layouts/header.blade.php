@@ -20,7 +20,6 @@
 	<link href="{{ asset('css/now-ui-dashboard.min.css?v=1.2.0') }}" rel="stylesheet" />
 	<link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
 	<link href="{{ asset('css/login.css') }}" rel="stylesheet" />
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 	
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

@@ -90,12 +90,29 @@
 							<div class="row">
 								<div class="col-4">
 									<div class="list-group" id="list-tab" role="tablist">
-										<a class="list-group-item list-group-item-action active" id="list-userFiles-list" data-toggle="list" href="#list-userFiles" role="tab" aria-controls="userFiles">User Files</a>
+										<a class="list-group-item list-group-item-action active" id="list-userProfiles-list" data-toggle="list" href="#list-userProfiles" role="tab" aria-controls="userProfiles">User Profiles</a>
+										<a class="list-group-item list-group-item-action" id="list-userFiles-list" data-toggle="list" href="#list-userFiles" role="tab" aria-controls="userFiles">User Files</a>
 									</div>
 								</div>
 								<div class="col-8">
 									<div class="tab-content" id="nav-tabContent">
-										<div class="tab-pane fade show active" id="list-userFiles" role="tabpanel" aria-labelledby="list-userFiles-list">
+										<div class="tab-pane fade show active" id="list-userProfiles" role="tabpanel" aria-labelledby="list-userProfiles-list">
+										@foreach($userResults->chunk(2) as $chunks)
+											<div class="row">
+												@foreach($chunks as $user)
+													<div class="col-md-6">
+														<h5>
+															<div class="card content-card">
+																<div class="card-body">
+																<i class="fas fa-user"></i>&nbsp&nbsp{{$user->name}}
+																</div>
+															</div>
+														</h5>
+													</div>
+												@endforeach
+											</div>
+										@endforeach
+										<div class="tab-pane fade" id="list-userFiles" role="tabpanel" aria-labelledby="list-userFiles-list">
 										@foreach($userResults as $user)
 											@if(count($user->files)>0)
 											@foreach($user->files->chunk(2) as $chunks)
